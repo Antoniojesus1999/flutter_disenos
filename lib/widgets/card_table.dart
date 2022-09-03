@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class CardTable extends StatelessWidget {
@@ -81,32 +83,42 @@ class _SigleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //El cliprrect lo usamos para que no difumine toda la pantalla si no que se corte justo en el hijo
     return Container(
-      height: 180,
       margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(62, 66, 107, 0.7),
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            backgroundColor: color,
-            radius: 30,
-            child: Icon(
-              icon,
-              size: 35,
+        //BackdropFilter con la propiedad filter blur difumina el ondo
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Container(
+            height: 180,
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(62, 66, 107, 0.7),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: color,
+                  radius: 30,
+                  child: Icon(
+                    icon,
+                    size: 35,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  text,
+                  style: TextStyle(color: color),
+                )
+              ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            text,
-            style: TextStyle(color: color),
-          )
-        ],
+        ),
       ),
     );
   }

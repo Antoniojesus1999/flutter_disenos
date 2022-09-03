@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     //Cambiar icono en negro o blanco
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return MaterialApp(
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       initialRoute: 'home_screen',
