@@ -83,9 +83,40 @@ class _SigleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //El cliprrect lo usamos para que no difumine toda la pantalla si no que se corte justo en el hijo
+    return _CardBackgroud(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            backgroundColor: color,
+            radius: 30,
+            child: Icon(
+              icon,
+              size: 35,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            text,
+            style: TextStyle(color: color),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _CardBackgroud extends StatelessWidget {
+  final Widget child;
+  const _CardBackgroud({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(20),
+      //El cliprrect lo usamos para que no difumine toda la pantalla si no que se corte justo en el hijo
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         //BackdropFilter con la propiedad filter blur difumina el ondo
@@ -97,29 +128,11 @@ class _SigleCard extends StatelessWidget {
               color: const Color.fromRGBO(62, 66, 107, 0.7),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundColor: color,
-                  radius: 30,
-                  child: Icon(
-                    icon,
-                    size: 35,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  text,
-                  style: TextStyle(color: color),
-                )
-              ],
-            ),
+            child: child,
           ),
         ),
       ),
     );
+    ;
   }
 }
