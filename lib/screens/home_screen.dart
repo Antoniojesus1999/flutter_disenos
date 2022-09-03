@@ -1,3 +1,4 @@
+import 'package:disenos/widgets/card_table.dart';
 import 'package:disenos/widgets/custom_bottom_navigation.dart';
 import 'package:disenos/widgets/page_title.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,10 @@ class _HomeBody extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(
       children: const [
+        //Title
         PageTitle(),
+        //Card Table
+        CardTable()
       ],
     ));
   }
